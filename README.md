@@ -58,20 +58,35 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
 
 
-// Overloading
+// 오버로딩
+// 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
 
 type Add = {
     (a:number, b:number) : number;
     (a:number, b:string) : number;
 }
 
-// 오버로딩
-// 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
 const add:Add = (a, b) => { // Alias type Add는 2개의 call signature를 가지고 있다.
     if(typeof b === "string") return a
     return a + b
 }
 
+
+// nextJS에서 라우터 home에 뭔가를 추가하는 예시. 때에 따라 path를 추가하거나 state를 추가할 수 있다.
+type Config = {
+    path : string,
+    state : object
+}
+
+type Push = {
+    (path:string):void,
+    (config: Config): void;
+}
+
+const push:Push = (config) => {
+    if(typeof config === "string") console.log(config)
+    else console.log(config.path)
+}
 
 
 
