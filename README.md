@@ -96,6 +96,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     }
 
     const add:Add = (a, b, c?:number) => { // Add를 부를 때 a,b를 부를 수도 있고 a,b,c를 부를 수도 있다. 그래서 c는 추가적으로 타입에 대한 정보를 명시해준다.
+        if(c) return a + b + c
         return a + b
     }
 
