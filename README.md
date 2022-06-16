@@ -30,4 +30,17 @@ c.toUpperCase(); // 불가. Property 'toUpperCase' does not exist on type 'void'
 function bye(name:string|number) : never { // never는 함수가 절대 return 하지 않을때 발생
     return "X" //  불가. Type 'string' is not assignable to type 'never'.
 }
+
+function test(name:string|number) { // never는 함수가 절대 return 하지 않을때 발생
+    if(typeof name === "string"){
+        name // 문자열로 나온다. (parameter) name: string
+    } else if (typeof name === "number") {
+        name // 숫자로 나온다. (parameter) name: number
+    } else {
+        name // never로 나온다. (parameter) name: never. 만약 인자가 문자열 혹은 숫자로 제대로 들어왔다면, 이 코드는 절대 실행되지 않아야 한다는 뜻.
+    }
+}
+
+
+
 ```
