@@ -58,7 +58,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
 
 
-// 오버로딩 예시
+** 오버로딩** 
 // 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
     // 예시 1.
     type Add = {
