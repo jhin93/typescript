@@ -118,7 +118,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     const d = superPrint([1, 2, true, false, "test"]) // const superPrint: <string | number | boolean>(arr: (string | number | boolean)[]) => void
 
     // 결론 : generic으로 인해 위의 superPrint 함수는 여러 형태를 가질 수 있다. 이를 polymorphism 이라고 한다.
-
+    // 만약 generic 대신 any를 쓴다면? a,b,c,d, 전부 any로 나오기 때문에 문제가 발생할 수 있다. 위의 함수는 arr[0]를 반환하는데, d.toUppercase()라는 메소드를 실행하면 문제를 일으키지 않는다. 만약 generic이었다면 문제를 일으키는 것으로 코드를 보호했을 것.
 
 
 
