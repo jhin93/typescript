@@ -2,12 +2,15 @@
 
 타입스크립트를 공부하는 공간입니다.  
 
+
+```typescript
+
+
 Alias 타입(별칭타입) - 따로 정의해서 쓸 수 있는 타입. 객체의 형태를 미리 정의할 수 있다. 구조체처럼. 
 readonly. 
 any. 
 Tuple ex) ["nico", 12, false]  
 
-```typescript
 // unknown  
 let a : unknown;
 // 어떤 작업을 하려면 a의 타입을 먼저 확인해야 한다.
@@ -41,6 +44,8 @@ function test(name:string|number) { // never는 함수가 절대 return 하지 �
     }
 }
 
+// Call Signature
+type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는지, 함수의 리턴 타입이 무엇인지 말해준다
 
 
 ```
