@@ -58,8 +58,8 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
 
 
-// 오버로딩
-// 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
+                // 오버로딩
+                // 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
 
 type Add = {
     (a:number, b:number) : number;
@@ -83,8 +83,8 @@ type Push = {
 }
 
 const push:Push = (config) => {
-    if(typeof config === "string") console.log(config)
-    else console.log(config.path)
+    if(typeof config === "string") console.log(config) // 이때의 config는 스트링
+    else console.log(config.path, config.state) // 이때의 config는 Config 타입 객체
 }
 
 
