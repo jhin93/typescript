@@ -58,34 +58,35 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
 
 
-                // 오버로딩
-                // 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
+// 오버로딩 예시
+// 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
+    // 예시 1.
+    type Add = {
+        (a:number, b:number) : number;
+        (a:number, b:string) : number;
+    }
 
-type Add = {
-    (a:number, b:number) : number;
-    (a:number, b:string) : number;
-}
+    const add:Add = (a, b) => { // Alias type Add는 2개의 call signature를 가지고 있다.
+        if(typeof b === "string") return a
+        return a + b
+    }
 
-const add:Add = (a, b) => { // Alias type Add는 2개의 call signature를 가지고 있다.
-    if(typeof b === "string") return a
-    return a + b
-}
+    // 예시 2.
+    // nextJS에서 라우터 home에 뭔가를 추가하는 오버로딩 예시. 때에 따라 path를 추가하거나 state를 추가할 수 있다.
+    type Config = {
+        path : string,
+        state : object
+    }
 
-// nextJS에서 라우터 home에 뭔가를 추가하는 오버로딩 예시. 때에 따라 path를 추가하거나 state를 추가할 수 있다.
-type Config = {
-    path : string,
-    state : object
-}
+    type Push = {
+        (path:string):void,
+        (config: Config): void;
+    }
 
-type Push = {
-    (path:string):void,
-    (config: Config): void;
-}
-
-const push:Push = (config) => {
-    if(typeof config === "string") console.log(config) // 이때의 config는 스트링
-    else console.log(config.path, config.state) // 이때의 config는 Config 타입 객체
-}
+    const push:Push = (config) => {
+        if(typeof config === "string") console.log(config) // 이때의 config는 스트링
+        else console.log(config.path, config.state) // 이때의 config는 Config 타입 객체
+    }
 
 
 
