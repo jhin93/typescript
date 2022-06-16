@@ -10,6 +10,11 @@ Alias 타입(별칭타입) - 따로 정의해서 쓸 수 있는 타입. 객체�
 readonly. 
 any. 
 Tuple ex) ["nico", 12, false]  
+unknown
+void
+never
+
+
 
 // unknown  
 let a : unknown;
@@ -21,12 +26,14 @@ if(typeof a === 'number') { // 가능. 조건문으로 a가 숫자임을 확인�
 }
 
 
+
 // void. 아무것도 리턴하지 않는 함수.
 function hello() { // function hello(): void
     console.log('x')
 }
 const c = hello();
 c.toUpperCase(); // 불가. Property 'toUpperCase' does not exist on type 'void'.
+
 
 
 // never
@@ -44,8 +51,31 @@ function test(name:string|number) { // never는 함수가 절대 return 하지 �
     }
 }
 
+
+
 // Call Signature
 type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는지, 함수의 리턴 타입이 무엇인지 말해준다
+
+
+
+// Overloading
+
+type Add = {
+    (a:number, b:number) : number;
+    (a:number, b:string) : number;
+}
+
+// 오버로딩
+// 오버로딩은 함수가 서로 다른 여러개의 call signature를 가질때 발생한다.
+const add:Add = (a, b) => { // Alias type Add는 2개의 call signature를 가지고 있다.
+    if(typeof b === "string") return a
+    return a + b
+}
+
+
+
+
+
 
 
 ```
