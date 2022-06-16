@@ -7,7 +7,7 @@ readonly.
 any. 
 Tuple ex) ["nico", 12, false]  
 
-```
+```typescript
 // unknown  
 let a : unknown;
 // 어떤 작업을 하려면 a의 타입을 먼저 확인해야 한다.
