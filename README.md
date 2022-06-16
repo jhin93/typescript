@@ -87,6 +87,17 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
         if(typeof config === "string") console.log(config) // 이때의 config는 스트링
         else console.log(config.path, config.state) // 이때의 config는 Config 타입 객체
     }
+    
+    // 예시 3.
+    // 파라미터의 수가 서로 다른 call signature
+    type Add = {
+        (a: number, b:number): number
+        (a: number, b:number, c:number): number
+    }
+
+    const add:Add = (a, b, c?:number) => { // Add를 부를 때 a,b를 부를 수도 있고 a,b,c를 부를 수도 있다. 그래서 c는 추가적으로 타입에 대한 정보를 명시해준다.
+        return a + b
+    }
 
 
 
