@@ -111,6 +111,11 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     // 사용법 : 타입스크립트에 generic을 사용하고 싶다고 알려줘야 한다. 꺾쇠 내부에 사용할 generic(ex T)을 작성. 타입스크립트는 generic을 처음 인식했을 때와 generic의 순서를 기반으로 generic의 타입을 알게 된다.
     // generic M은 함수의 두번째 인자를 사용할 것.
     
+    // 함수로 구현한 모습
+    //function superPrint<T>(a: T[]){
+    //    return a[0]
+    //}
+    
     const superPrint: SuperPrint = (arr) => arr[0]
     
     // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. 
