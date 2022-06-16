@@ -105,10 +105,12 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     // generic은 Polymorphism을 위한 도구이다. 내가 생각한 대로 call signature를 생성(generate)해주는 도구인 것이다.
     //generic은 call signature를 작성할 때, 어떤 타입이 들어올 지 확실하게 모르는 경우에 사용한다.
     type SuperPrint = {
-        <T>(arr: T[]):T; // 사용법 1 : 타입스크립트에 generic을 사용하고 싶다고 알려줘야 한다. 꺾쇠(<>)를 사용.
-
-    }
-
+        <T, M>(a: T[], b: M):T; 
+    } 
+    <제네릭이름>(인자1 : 제네릭이름(데이터타입))
+    // 사용법 : 타입스크립트에 generic을 사용하고 싶다고 알려줘야 한다. 꺾쇠 내부에 사용할 generic(ex T)을 작성. 타입스크립트는 generic을 처음 인식했을 때와 generic의 순서를 기반으로 generic의 타입을 알게 된다.
+    // generic M은 함수의 두번째 인자를 사용할 것.
+    
     const superPrint: SuperPrint = (arr) => arr[0]
 
     // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. placeholder가 call signature를 우리가 요구하는 대로 생성(generate)한다.
