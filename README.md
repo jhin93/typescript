@@ -71,8 +71,7 @@ const add:Add = (a, b) => { // Alias type Add는 2개의 call signature를 가�
     return a + b
 }
 
-
-// nextJS에서 라우터 home에 뭔가를 추가하는 예시. 때에 따라 path를 추가하거나 state를 추가할 수 있다.
+// nextJS에서 라우터 home에 뭔가를 추가하는 오버로딩 예시. 때에 따라 path를 추가하거나 state를 추가할 수 있다.
 type Config = {
     path : string,
     state : object
