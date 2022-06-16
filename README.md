@@ -101,6 +101,23 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     }
 
 
+** Polymorphism **
+
+    //generic은 call signature를 작성할 때, 어떤 타입이 들어올 지 확실하게 모르는 경우에 사용한다.
+    type SuperPrint = {
+        <T>(arr: T[]):T; // 사용법 1 : 타입스크립트에 generic을 사용하고 싶다고 알려줘야 한다. 꺾쇠(<>)를 사용.
+
+    }
+
+    const superPrint: SuperPrint = (arr) => arr[0]
+
+    // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. 
+    const a = superPrint([1, 2, 3, 4]) // const superPrint: <number>(arr: number[]) => void
+    const b = superPrint([true, false, true, true]) // const superPrint: <boolean>(arr: boolean[]) => void
+    const c = superPrint(["a", "b", "c"]) // const superPrint: <string>(arr: string[]) => void
+    const d = superPrint([1, 2, true, false, "test"]) // const superPrint: <string | number | boolean>(arr: (string | number | boolean)[]) => void
+
+    // 결론 : generic으로 인해 위의 superPrint 함수는 여러 형태를 가질 수 있다. 이를 polymorphism 이라고 한다.
 
 
 
