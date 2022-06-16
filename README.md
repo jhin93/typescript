@@ -111,7 +111,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
     const superPrint: SuperPrint = (arr) => arr[0]
 
-    // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. placeholder가 call signature를 요구하는 대로 생성(generate)한다.
+    // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. placeholder가 call signature를 우리가 요구하는 대로 생성(generate)한다.
     const a = superPrint([1, 2, 3, 4]) // const superPrint: <number>(arr: number[]) => void
     const b = superPrint([true, false, true, true]) // const superPrint: <boolean>(arr: boolean[]) => void
     const c = superPrint(["a", "b", "c"]) // const superPrint: <string>(arr: string[]) => void
