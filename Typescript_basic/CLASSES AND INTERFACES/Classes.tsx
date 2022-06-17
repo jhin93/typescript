@@ -1,24 +1,30 @@
 
-// 1. interface 버전
+// interface는 property를 축적하는 것이 가능하다.
 interface User {
     name:string
 }
 
-interface Player extends User { // 인터페이스가 인터페이스를 상속하는 것도 가능
+interface User {
+    lastname:string
 }
 
-const nico : Player = {
-    name:"nico"
+interface User {
+    health: number
 }
 
-// 2. type 버전
-type User2 = {
+// 타입스크립트가 알아서 다 합쳐줌. type은 안됨.
+const nico: User = {
+    name:"nico",
+    lastname:"test",
+    health:10
+}
+
+
+// type은 interface와 달리 축적(합체)가 안된다.
+type User2 = { // User2' 식별자가 중복되었습니다.
     name:string
 }
 
-type Player2 = User & { // &은 &연산자.
-}
-
-const nico2 : Player = {
-    name:"nico"
+type User2 = {
+    lastName:string
 }
