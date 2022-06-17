@@ -1,50 +1,18 @@
 
-// 1. 타입을 만드는 방법
-type Words = {
-    [key:string]: string 
+// 타입을 지정된 옵션으로만 제한하기
+type Team = "red" | "blue" | "yellow"
+type Health = 1 | 5 | 10
+
+type Player = {
+    nickname:string,
+    team:Team // team을 특정 string으로만 사용할 수 있도록 제한.
+    health: Health // health를 특정 number로 제한
 }
 
-class Dict {
 
-    private words: Words
-    constructor() {
-        this.words = {}
-    }
-    add(word:Word){
-        if(this.words[word.term] === undefined){
-            this.words[word.term] = word.def
-        }
-    }
-    def(term:string){
-        return this.words[term]
-    }
-    static hello() {
-        return "hello"
-    }
+const nico:Player = {
+    nickname: "nico",
+    team:"pink",// pink는 'Team'타입에 없기 때문에 불가능하다
+    health:100 // 100 역시 Team 에 없기 때문에 불가능하다.
 }
-
-class Word {
-    constructor (
-        public readonly term:string, // 현재 term과 def는 둘다 public 이라서 누군가 기존의 값을 변경할 수 있다. public이지만 변경할 수 없도록 하려면 readonly를 추가한다.
-        public readonly def:string
-    ) {
-
-    }
-}
-
-const kimchi = new Word("kimchi", "한국의 음식");
-kimchi.def = "xxx" // readonly이기 때문에 값을 "xxx"로 변경하는 것은 불가능하다
-Dict.hello // static 메소드를 자바스크립트처럼 사용 가능. static메소드는 인스턴스 없이 호출이 가능하다
-dict.hello // 인스턴스화(const dict = new Dict())됐기 때문에 static 메소드인 hello를 부를 수 없다.
-
-const dict = new Dict()
-dict.add(kimchi);
-dict.def("kimchi")
-
-
-
-
-
-
-
 
