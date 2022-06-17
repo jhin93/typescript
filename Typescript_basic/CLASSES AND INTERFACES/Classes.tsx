@@ -1,22 +1,24 @@
 
-// 1. type으로 alias 타입 만들기
 type test = String
 
-// 2. 타입이 특정 값을 가질 수 있도록 제한하기
 type Team = "red" | "blue" | "yellow"
 type Health = 1 | 5 | 10
 
-// 3. type Player처럼 type으로 오브젝트의 모양을 묘사할 수 있다.
+// Interface
+// 인터페이스는 오브젝트의 모양을 특정해주기 위한 것. 
+// 이 기능밖에 없다.
+
+// 타입스크립트에게 오브젝트의 모양을 알려주는 2가지 방법
+// 1. type 이름 = {}
 type Player = {
     nickname:string,
-    team:Team // team을 특정 string으로만 사용할 수 있도록 제한.
-    health: Health // health를 특정 number로 제한
+    team:Team 
+    health: Health
 }
-
-
-const nico:Player = {
-    nickname: "nico",
-    team:"yellow",
-    health: 10
+// 2. interface 이름
+interface Person { // 나도 개인적으로 interface로 오브젝트를 정의하는 게 더 직관적이고 쉽다고 생각함
+    nickname:string,
+    team:Team 
+    health: Health
 }
-
+// 둘의 다른 점은 type 키워드는 interface에 비해 활용할 여지가 더 많다.
