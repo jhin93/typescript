@@ -24,8 +24,14 @@ class Player implements User, Human{ // implements는 클래스가 인터페이�
 
 
 // 인터페이스를 타입으로 사용할 수도 있다.
-function makeUser(user: User) {
-    return "hi"
+function makeUser(user: User): User {
+    // 클래스 리턴할때처럼(ex new User()) new 를 안써도 됨
+    return {
+        firstName: "nico",
+        lastName: "las",
+        fullName:() => "xx",
+        sayHi: (name) => "string"
+    }
 }
 // 인자로 User 인터페이스 모양의 형태를 받음.
 makeUser({
