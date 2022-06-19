@@ -4,10 +4,15 @@ interface User { // 인터페이스는 클래스의 모양을 알려준다는 �
     sayHi(name:string):string 
     fullName():string
 }
-class Player implements User{ // implements는 클래스가 인터페이스를 상속받을 때, 그 형태를 그대로 상속받도록 강제한다.
+// 인터페이스는 중복해서 상속이 가능하다.
+interface Human {
+    health:number
+}
+class Player implements User, Human{ // implements는 클래스가 인터페이스를 상속받을 때, 그 형태를 그대로 상속받도록 강제한다.
     constructor(
         public firstName:string,
-        public lastName:string
+        public lastName:string,
+        public health:number
     ){}
     fullName(){
         return `${this.firstName} ${this.lastName}`
@@ -18,50 +23,17 @@ class Player implements User{ // implements는 클래스가 인터페이스를 �
 }
 
 
-// 인터페이스를 상속하는 것의 문제점
-// 1. private property를 사용하지 못한다.
-// 2. constructor가 없다. 추상클래스는 있어서 그냥 상속받기만 하면 됐다. 하지만 인터페이스는 없어서 상속받는 클래스에서 작성해야 한다.
-
-
-
-// 1. 인터페이스를 자바스크립트로 컴파일한 결과.
-
-// "use strict";
-// class Player {
-//     constructor(firstName, lastName) {
-//         this.firstName = firstName;
-//         this.lastName = lastName;
-//     }
-//     fullName() {
-//         return `${this.firstName} ${this.lastName}`;
-//     }
-//     sayHi(name) {
-//         return `Hello ${name}. My name is ${this.fullName()}`;
-//     }
-// }
-
-
-
-
-// 2. 추상클래스를 자바스크립트로 컴파일한 결과
-
-// "use strict";
-// class User {
-//     constructor(firstName, lastName) {
-//         this.firstName = firstName;
-//         this.lastName = lastName;
-//     }
-// }
-// class Player extends User {
-//     fullName() {
-//         return `${this.firstName} ${this.lastName}`;
-//     }
-//     sayHi(name) {
-//         return `Hello ${name}. My name is ${this.fullName()}`;
-//     }
-// }
-
-
+// 인터페이스를 타입으로 사용할 수도 있다.
+function makeUser(user: User) {
+    return "hi"
+}
+// 인자로 User 인터페이스 모양의 형태를 받음.
+makeUser({
+    firstName: "nico",
+    lastName: "las",
+    fullName:() => "xx",
+    sayHi: (name) => "string"
+})
 
 
 
