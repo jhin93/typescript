@@ -104,7 +104,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 ** generic
 
 type SuperPrint = {
-    <TypePlaceholder>(arr: TypePlaceholder[]): void // 리턴값이 void, 즉 없다는 것.
+    <TypePlaceholder>(arr: TypePlaceholder[]): TypePlaceholder // 리턴값이 void, 즉 없다는 것.
     // generic을 사용하는 이유 : type 혹은 interface 안에 call signature를 작성할 때 어떤 타입의 인자가 들어올지 모를 때 사용한다
     // (arr:number[]): void 는 number 배열만 받을 수 있다. [1, 2, false, true] 와 같이 복잡한 타입의 인자는 받을 수 없기에 generic이 필요하다.
     // ex) SuperPrint를 상속받은 superPrint에 타입으로 [1, 2, false, true] 주려고 하는데, type SuperPrint에는 이에 해당하는 call signature가 없는 상황.
@@ -114,14 +114,16 @@ type SuperPrint = {
     // 2. 리턴 형식을 작성한 generic으로 바꿔준다. ex) <TypePlaceholder>(arr: number[]) ---> <TypePlaceholder>(arr: TypePlaceholder[])
 }
 
-const superPrint: SuperPrint = (arr) => {
-    arr.forEach(i => console.log(i))
-}
+// 리턴 형식도 바꿀수 있다. generic을 리턴 형식으로 정해주면 됨.
+// ex)  <TypePlaceholder>(arr: TypePlaceholder[]): void ->
+//      <TypePlaceholder>(arr: TypePlaceholder[]): TypePlaceholder 
+const superPrint: SuperPrint = (arr) => arr[0]
 
-superPrint([1, 2, 3, 4])
-superPrint([true, false, true, false])
-superPrint(["a", "b", "c"])
-superPrint([1, 2, false, true, "hello"])
-
+const a = superPrint([1, 2, 3, 4])
+const b = superPrint([true, false, true, false])
+const c = superPrint(["a", "b", "c"])
+const d = superPrint([1, 2, false, true, "hello"])
+// SuperPrint의 리턴 타입이 제네릭(TypePlaceholder)이기 떄문에, 위의 a,b,c,d 모두 함수 superPrint에 의해 타입이 정해진다.
+// a는 number, b는 boolean, c는 string, d는 string | number | boolean
 
 ```
