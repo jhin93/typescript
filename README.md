@@ -101,31 +101,27 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     }
 
 
-** Polymorphism **
-    // generic은 Polymorphism을 위한 도구이다. 내가 생각한 대로 call signature를 생성(generate)해주는 도구인 것이다.
-    //generic은 call signature를 작성할 때, 어떤 타입이 들어올 지 확실하게 모르는 경우에 사용한다.
-    type SuperPrint = {
-        <T, M>(a: T[], b: M):T; 
-    } 
-    <제네릭이름>(인자1 : 제네릭이름(데이터타입))
-    // 사용법 : 타입스크립트에 generic을 사용하고 싶다고 알려줘야 한다. 꺾쇠 내부에 사용할 generic(ex T)을 작성. 타입스크립트는 generic을 처음 인식했을 때와 generic의 순서를 기반으로 generic의 타입을 알게 된다.
-    // generic M은 함수의 두번째 인자를 사용할 것.
-    
-    // 함수로 구현한 모습
-    //function superPrint<T>(a: T[]){
-    //    return a[0]
-    //}
-    
-    const superPrint: SuperPrint = (arr) => arr[0]
-    
-    // 타입스크립트는 generic에서 타입스크립트가 알아낸 타입으로 대체한다. 
-    const a = superPrint([1, 2, 3, 4], "x") // const superPrint: <number>(arr: number[]) => void. 타입스크립트는 두번째 인자가 함수에서 generic으로 되어있다는 것을 알게 됨.
-    const b = superPrint([true, false, true, true], 1) // const superPrint: <boolean>(arr: boolean[]) => void
-    const c = superPrint(["a", "b", "c"], true) // const superPrint: <string>(arr: string[]) => void
-    const d = superPrint([1, 2, true, false, "test"], 1) // const superPrint: <string | number | boolean>(arr: (string | number | boolean)[]) => void
+** generic
 
-    // 결론 : generic으로 인해 위의 superPrint 함수는 여러 형태를 가질 수 있다. 이를 polymorphism 이라고 한다.
+type SuperPrint = {
+    <TypePlaceholder>(arr: TypePlaceholder[]): void // 리턴값이 void, 즉 없다는 것.
+    // generic을 사용하는 이유 : type 혹은 interface 안에 call signature를 작성할 때 어떤 타입의 인자가 들어올지 모를 때 사용한다
+    // (arr:number[]): void 는 number 배열만 받을 수 있다. [1, 2, false, true] 와 같이 복잡한 타입의 인자는 받을 수 없기에 generic이 필요하다.
+    // ex) SuperPrint를 상속받은 superPrint에 타입으로 [1, 2, false, true] 주려고 하는데, type SuperPrint에는 이에 해당하는 call signature가 없는 상황.
 
+    // 사용법
+    // 1. generic을 받는 인자 앞에 <>를 연다. 그리고 원하는 제네릭 이름을 넣는다. ex) <T>, <GenericType>, <Potato>
+    // 2. 리턴 형식을 작성한 generic으로 바꿔준다. ex) <TypePlaceholder>(arr: number[]) ---> <TypePlaceholder>(arr: TypePlaceholder[])
+}
+
+const superPrint: SuperPrint = (arr) => {
+    arr.forEach(i => console.log(i))
+}
+
+superPrint([1, 2, 3, 4])
+superPrint([true, false, true, false])
+superPrint(["a", "b", "c"])
+superPrint([1, 2, false, true, "hello"])
 
 
 ```
