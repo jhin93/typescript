@@ -126,4 +126,9 @@ const d = superPrint([1, 2, false, true, "hello"])
 // SuperPrint의 리턴 타입이 제네릭(T)이기 떄문에, 위의 a,b,c,d 모두 함수 superPrint에 의해 타입이 정해진다.
 // a는 number, b는 boolean, c는 string, d는 string | number | boolean
 
+
+문자열을 숫자로 쉽게 바꾸는 법. +를 붙인다.
+문자열 : '1234'
+숫자 : +'1234'
+
 ```
