@@ -104,7 +104,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 ** generic
 
 type SuperPrint = {
-    <T>(arr: T[]): T // 리턴값이 void, 즉 없다는 것.
+    <T>(arr: T[]): T // 리턴값이 generic 
     // generic을 사용하는 이유 : type 혹은 interface 안에 call signature를 작성할 때 어떤 타입의 인자가 들어올지 모를 때 사용한다
     // (arr:number[]): void 는 number 배열만 받을 수 있다. [1, 2, false, true] 와 같이 복잡한 타입의 인자는 받을 수 없기에 generic이 필요하다.
     // ex) SuperPrint를 상속받은 superPrint에 타입으로 [1, 2, false, true] 주려고 하는데, type SuperPrint에는 이에 해당하는 call signature가 없는 상황.
