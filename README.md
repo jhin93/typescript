@@ -115,8 +115,7 @@ type SuperPrint = {
 }
 
 // 리턴 형식도 바꿀수 있다. generic을 리턴 형식으로 정해주면 됨.
-// ex)  <T>(arr: T[]): void ->
-//      <T>(arr: T[]): T 
+// ex)  <T>(arr: T[]): void -> <T>(arr: T[]): T 
 const superPrint: SuperPrint = (arr) => arr[0]
 
 const a = superPrint([1, 2, 3, 4])
