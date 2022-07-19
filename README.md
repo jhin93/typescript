@@ -83,15 +83,15 @@ interface PlayerB {
 }
 
 // interface 상속
-interface PlayerBB extends PlayerB {
+interface PlayerB {
     lastname:string
 }
 // interface 속성 추가
-interface PlayerBB { // interface는 이런식으로 속성을 추가해도 문제가 일어나지 않는다.
+interface PlayerB { // interface는 이런식으로 속성을 추가해도 문제가 일어나지 않는다.
     health: number
 }
 
-const playerB: PlayerBB = {
+const playerB: PlayerB = {
     name:"nico"
 }
 
