@@ -65,9 +65,11 @@ type PlayerAA = PlayerA & {
 }
 // type 속성 추가
 // 이런식으론 속성을 추가하는 것은 불가하다. PlayerAA 타입은 정의되어서 중복된다. 불가.
-type PlayerAA = { // Duplicate identifier 'PlayerAA'.
-    health:number
-}
+// type PlayerAA = { // Duplicate identifier 'PlayerAA'.
+//     health:number
+// }
+
+// 새로운 타입을 만들고(ex PlayerAA) PlayerA를 써 준 다음 남은 것들을 써줘야 함(PlayerA & {...})
 
 const playerA: PlayerAA = {
     name:"nico",
@@ -83,16 +85,18 @@ interface PlayerB {
 }
 
 // interface 상속
-interface PlayerB {
+interface PlayerBB extends PlayerB {
     lastname:string
 }
 // interface 속성 추가
-interface PlayerB { // interface는 이런식으로 속성을 추가해도 문제가 일어나지 않는다.
+interface PlayerBB { // interface는 이런식으로 속성을 추가해도 문제가 일어나지 않는다.
     health: number
 }
 
-const playerB: PlayerB = {
-    name:"nico"
+const playerB: PlayerBB = {
+    name:"nico",
+    lastname:"xxx",
+    health: 100
 }
 
 
