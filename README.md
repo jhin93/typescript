@@ -14,8 +14,6 @@ unknown
 void
 never
 
-
-
 // unknown  
 let a : unknown;
 // 어떤 작업을 하려면 a의 타입을 먼저 확인해야 한다.
@@ -51,8 +49,51 @@ function test(name:string|number) { // never는 함수가 절대 return 하지 �
     }
 }
 
+// type 과 interface
+// 둘의 공통 목적 : 타입스크립트에게 오브젝트의 모양과 타입을 알려주는 게 목표.
+
+// --------------------------------
+
+// type 
+type PlayerA = {
+    name:string
+}
+
+// type 상속
+type PlayerAA = PlayerA & {
+    lastname:string // PlayerA를 상속받고 lastname 속성 추가
+}
+// type 속성 추가
+// 이런식으론 속성을 추가하는 것은 불가하다. PlayerAA 타입은 정의되어서 중복된다. 불가.
+type PlayerAA = { // Duplicate identifier 'PlayerAA'.
+    health:number
+}
+
+const playerA: PlayerAA = {
+    name:"nico",
+    lastName:"XXX"
+}
 
 
+
+// --------------------------------
+// interface
+interface PlayerB {
+    name:string
+}
+
+// interface 상속
+interface PlayerBB extends PlayerB {
+    lastname:string
+}
+// interface 속성 추가
+interface PlayerBB { // interface는 이런식으로 속성을 추가해도 문제가 일어나지 않는다.
+    health: number
+}
+
+const playerB: PlayerBB = {
+    name:"nico"
+}
 
 
 // Call Signature
