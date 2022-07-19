@@ -51,7 +51,7 @@ function test(name:string|number) { // never는 함수가 절대 return 하지 �
 
 // type 과 interface
 // 둘의 공통 목적 : 타입스크립트에게 오브젝트의 모양과 타입을 알려주는 게 목표.
-
+// 가장 큰 차이점 : interface는 속성을 추가하기 위해 reopen 할 수 있지만, type은 그렇게 할 수 없다. 
 // --------------------------------
 
 // type 
@@ -65,9 +65,9 @@ type PlayerAA = PlayerA & {
 }
 // type 속성 추가
 // 이런식으론 속성을 추가하는 것은 불가하다. PlayerAA 타입은 정의되어서 중복된다. 불가.
-// type PlayerAA = { // Duplicate identifier 'PlayerAA'.
-//     health:number
-// }
+type PlayerAA = { // Duplicate identifier 'PlayerAA'. 불가능
+    health:number
+}
 
 // 새로운 타입을 만들고(ex PlayerAA) PlayerA를 써 준 다음 남은 것들을 써줘야 함(PlayerA & {...})
 
