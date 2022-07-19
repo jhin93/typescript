@@ -103,7 +103,7 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
 
 ** Polymorphism **
     // generic은 Polymorphism을 위한 도구이다. 내가 생각한 대로 call signature를 생성(generate)해주는 도구인 것이다.
-    //generic은 call signature를 작성할 때, 어떤 타입이 들어올 지 확실하게 모르는 경우에 사용한다.
+    // generic은 call signature를 작성할 때, 어떤 타입이 들어올 지 확실하게 모르는 경우에 사용한다.
     type SuperPrint = {
         <T, M>(a: T[], b: M):T; 
     } 
