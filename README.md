@@ -152,6 +152,51 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     // generic은 Polymorphism을 위한 도구이다. 내가 생각한 대로 call signature를 생성(generate)해주는 도구인 것이다.
     // generic은 concrete타입이 아닌 placeholder타입을 사용하게 해준다. 때가 되면, 타입스크립트가 placeholder 타입을 concrete 타입으로 바꾸어준다.
     // generic은 call signature를 작성할 때, 어떤 타입이 인자로 들어올 지 확실하게 모르는 경우에 사용한다.
+    
+    function getSize<T>(arr: T[]): number{
+        return arr.length;
+    }
+    const arr1 = [1, 2, 3];
+    getSize<number>(arr1); // 결과값 : 3
+    // getSize 함수에 마우스를 올리면 나오는 결과 : function getSize<number>(arr: number[]): number
+
+    const arr2 = ["a", "b", "c"]
+    getSize<string>(arr2); // 3
+
+    const arr3 = [false, true, true];
+    getSize<boolean>(arr3); // 3
+
+    const arr4 = [{}, {}, { name: "Tim" }];
+    getSize<Object>(arr4); // 3
+
+    const arr5 = [{}, {}, true, 4];
+    getSize<any>(arr5); 
+
+
+
+    interface Mobile<T> {
+        name: string;
+        price: number;
+        option: T;
+    }
+
+    const m1: Mobile<object> = { // 아래 option이 객체(object)이기 때문에 T에 object 대입
+        name: "s21",
+        price: 1000,
+        option: {
+            color: "red",
+            coupon: false,
+        },
+    };
+
+    const m2: Mobile<string> = { // 아래 option이 문자열(string)이기 때문에 T에 string 대입
+        name: "s20",
+        price: 900,
+        option: "good",
+    };
+
+    
+    
     type SuperPrint = {
         <T, M>(a: T[], b: M):T; 
     } 
