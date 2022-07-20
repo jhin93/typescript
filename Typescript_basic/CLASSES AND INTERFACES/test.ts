@@ -17,7 +17,7 @@ const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
 const book: Book = { name: "test", price: 3000 };
 
-function showName(data): string {
+function showName(data): string { // 생겼던 에러가 없어졌다
     return data.name
 }
 
