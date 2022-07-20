@@ -16,8 +16,8 @@ const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
 const book: Book = { price: 3000 };
 
-function showName<T>(data: T): string {
-    return data.name
+function showName<T>(data: T): string { 
+    return data.name // 실제로 전달되는 user나 car에는 name 속성이 있지만, 모든 매개변수에 name 속성이 있다고 장담할 수 없음
 }
 
 showName(user);
