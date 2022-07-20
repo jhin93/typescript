@@ -9,15 +9,16 @@ interface Car {
 }
 
 interface Book {
+    name: string;
     price: number;
 }
 
 const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
-const book: Book = { price: 3000 };
+const book: Book = { name: "test", price: 3000 };
 
-function showName(data): string {
-    return data.name // 원래대로 되돌렸는데 안생기네
+function showName<T>(data: T): string {
+    return data.name
 }
 
 showName(user);
