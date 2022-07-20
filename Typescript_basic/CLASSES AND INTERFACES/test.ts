@@ -9,13 +9,12 @@ interface Car {
 }
 
 interface Book {
-    name: string;
     price: number;
 }
 
 const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
-const book: Book = { name: "test", price: 3000 };
+const book: Book = { price: 3000 };
 
 function showName<T>(data: T): string {
     return data.name
