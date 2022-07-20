@@ -9,16 +9,15 @@ interface Car {
 }
 
 interface Book {
-    name: string;
     price: number;
 }
 
 const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
-const book: Book = { name: "test", price: 3000 };
+const book: Book = { price: 3000 };
 
-function showName(data): string { // 생겼던 에러가 없어졌다
-    return data.name
+function showName(data): string {
+    return data.name // 원래대로 되돌렸는데 안생기네
 }
 
 showName(user);
