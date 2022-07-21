@@ -32,4 +32,4 @@ stringsStorage.get("test1") // LocalStorage<string>.get(key: string): string // 
 
 const numberStorage = new LocalStorage<number>
 numberStorage.get("test2") // LocalStorage<number>.get(key: string): number // string을 보내주고. number을 받게 될 것.
-numberStorage.set("test", "tes") // numberStorage는 LocalStorage<number>로 알 수 있듯, T가 number 이기 때문에 set 함수가 받는 두번째 인자 value(value:T)는 number가 되어야 한다.
+numberStorage.set("test", 123) // numberStorage는 LocalStorage<number>로 알 수 있듯, T가 number 이기 때문에 set 함수가 받는 두번째 인자 value(value:T)는 number가 되어야 한다.
