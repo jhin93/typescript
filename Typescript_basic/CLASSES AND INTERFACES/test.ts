@@ -1,3 +1,5 @@
+
+// 인터페이스 정의
 interface User {
     name: string;
     age: number;
@@ -9,12 +11,14 @@ interface Car {
 }
 
 interface Book {
+    name: string;
     price: number;
 }
 
+// 인스턴스 정의
 const user: User = { name: "a", age: 10};
 const car: Car = { name: "bmw", color: "red"};
-const book: Book = { price: 3000 };
+const book: Book = { name: "bmw", price: 3000 };
 
 // function showName<T extends { name: string }>(data: T): string { // 매개변수로 들어오는 어떤 T 타입은 name이 string인 객체를 확장한 형태이다. 다양한 모습의 객체가 T로써 올 수 있겠지만, 항상 { name: string } 형태를 가지고 있다
 //     return data.name
