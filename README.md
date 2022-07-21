@@ -196,9 +196,8 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
     };
     
     =========== generic을 함수에 적용한 예시 1 ===========
-
-    // Storage는 이미 정의된 예약어(마우스 올려서 확인 가능). interface Storage를 override(속성추가)하지 않고 SStorage 사용 
-
+    
+    // 제네릭을 클래스로 보냄(LocalStorage<T>) -> 클래스는 제네릭을 인터페이스로 보냄(SStorage<T>) -> 인터페이스는 제네릭을 사용함([key:string] : T)
 
     interface SStorage<T> { // 3. 2에서 인터페이스로 보낸 제네릭을 여기서 받음.
         [key:string] : T // key가 제한되지 않은 오브젝트를 정의하게 해줌. 즉, key 값은 정해지지 않았지만, 무슨 타입인지는 안다(string 타입이라는 말). 그리고 받은 T를 위치시킴([key:string] : T)
@@ -221,7 +220,6 @@ type Add = (a:number, b:number) => number; // 함수가 어떻게 호출되는�
         }
     }
 
-    // 제네릭을 클래스로 보냄(LocalStorage<T>) -> 클래스는 제네릭을 인터페이스로 보냄(SStorage<T>) -> 인터페이스는 제네릭을 사용함([key:string] : T)
 
     // class LocalStorage<T> 사용예시
     const stringsStorage = new LocalStorage<string> // const stringsStorage: LocalStorage<string>
