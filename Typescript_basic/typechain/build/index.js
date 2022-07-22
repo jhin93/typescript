@@ -1,3 +1,9 @@
-
-// es3일때는 쓸 수 없던 const와 화살표 함수가 적용됨
-const hello = () => "hi";
+var Block = /** @class */ (function () {
+    function Block(data) {
+        this.data = data;
+    }
+    Block.hello = function () {
+        return "hi";
+    };
+    return Block;
+}());
