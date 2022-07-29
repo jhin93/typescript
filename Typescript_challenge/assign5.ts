@@ -27,6 +27,11 @@ class Dict {
             delete this.words[word.term]
         }
     }
+    update(term:string, newDef:string) {
+        if(this.words[term] !== undefined){
+            this.words[term] = newDef
+        }
+    }
 
 }
 
