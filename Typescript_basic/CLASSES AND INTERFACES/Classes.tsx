@@ -1,24 +1,33 @@
 
-abstract class User { // 추상 클래스는 이걸 상속받는 다른 클래스가 가질 property와 메소드를 지정하도록 해줌
-    constructor(
-        protected firstName:string,
-        protected lastName:string
-    ){}
-    abstract sayHi(name:string):string // string으로 된 name을 받아서 string을 반환
-    
+type Words = {
+    [key: string]: string
 }
 
+class Dict {
+    private words: Words
+    constructor() {
+        this.words = {}
+    }
+    add(word: Word) { // class를 type 처럼 사용. 파라미터가 클랜스의 인스턴스이기를 원할 때 이렇게 쓸 수 있다.
+        if (this.words[word.term] === undefined) {
+            this.words[word.term] = word.def;
+        }
+    }
+    def(term:string) {
+        return this.words[term]
+    }
+}
 
+class Word {
+    constructor(
+        public term: string,
+        public def: string
+    ) { }
+}
 
+const kimchi = new Word("kimchi", "한국의 음식")
 
+const dict = new Dict()
 
-
-
-
-
-
-
-
-
-
-
+dict.add(kimchi);
+dict.def("kimchi")
