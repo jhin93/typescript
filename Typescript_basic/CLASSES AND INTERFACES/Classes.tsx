@@ -32,10 +32,10 @@ const dict = new Dict()
 dict.add(kimchi);
 dict.def("kimchi")
 
-// type오브젝트 묘사 혹은 제한이 가능하다
+// interface는 오로지 오브젝트의 모양을 타입스크립트에게 설명하기 위해서만 사용되는 키워드
 type Team = "red" | "blue"
 
-type Player = {
+interface Player  {
     nickname:string,
     team:Team
 }
