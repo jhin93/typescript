@@ -31,3 +31,16 @@ const dict = new Dict()
 
 dict.add(kimchi);
 dict.def("kimchi")
+
+// type오브젝트 묘사 혹은 제한이 가능하다
+type Team = "red" | "blue"
+
+type Player = {
+    nickname:string,
+    team:Team
+}
+
+const nico: Player = {
+    nickname:"test",
+    team:"blue"
+}
