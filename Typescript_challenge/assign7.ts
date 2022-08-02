@@ -8,10 +8,10 @@ abstract class abstractLocalStorage<T> {
     constructor(
         protected storage: LocalStorageAPI<T> = {}
     ) {}
-    abstract setItem(key:string, value:T)
-    abstract getItem(key:string)
-    abstract  clearItem(key:string)
-    abstract clear()
+    abstract setItem(key:string, value:T):void
+    abstract getItem(key:string): T
+    abstract clearItem(key:string): void
+    abstract clear(): void
 }
 
 class localStorage<T> extends abstractLocalStorage<T> {
