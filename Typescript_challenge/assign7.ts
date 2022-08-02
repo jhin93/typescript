@@ -14,7 +14,7 @@ abstract class abstractLocalStorage<T> {
     abstract clear(): void
 }
 
-class localStorage<T> extends abstractLocalStorage<T> {
+class localStorageAPI<T> extends abstractLocalStorage<T> {
     setItem(key:string, value:T) {
         this.storage[key] = value
     }
