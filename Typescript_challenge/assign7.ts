@@ -30,8 +30,33 @@ class localStorageAPI<T> extends abstractLocalStorage<T> {
 }
 
 
-
-
 interface GeolocationAPI {
+    success: (GeolocationPosition: object) => any;
+    error: (GeolocationPositionError: object) => any;
     
 }
+
+class geolocationClass {
+    successFn(pos) {
+        const crd = pos.coords;
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+    }
+    errorFn(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    getCurrentPosition(){}
+    watchPosition(){}
+    clearWatch(){}
+}
+
+const geolocation = new geolocationClass
+geolocation.getCurrentPosition()
+geolocation.watchPosition()
+geolocation.clearWatch()
+
+
+
